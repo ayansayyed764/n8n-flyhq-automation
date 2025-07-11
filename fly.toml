@@ -1,0 +1,25 @@
+app = "your-app-name"
+primary_region = "sin"
+
+[env]
+N8N_BASIC_AUTH_USER = "admin"
+N8N_BASIC_AUTH_PASSWORD = "admin123"
+N8N_PROTOCOL = "https"
+N8N_PORT = "5678"
+N8N_HOST = "your-app-name.fly.dev"
+
+[[services]]
+  internal_port = 5678
+  protocol = "tcp"
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
